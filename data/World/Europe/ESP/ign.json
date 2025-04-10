@@ -1,7 +1,7 @@
 [
     {
-        "name": "IGN ES",
-        "description": "Servicio de Posicionamiento en Tiempo Real",
+        "name": "Lets change to see IGN ES",
+        "description": "... what happens Servicio de Posicionamiento en Tiempo Real",
         "urls": [
             "http://192.148.213.42:2101",
             "http://ergnss-tr.ign.es:2101"
