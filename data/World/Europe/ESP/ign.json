@@ -13,7 +13,7 @@
         "last_update": "2024-12-09",
         "streams": [
             {
-                "filter": {
+                "filte": {
                     "mountpoints": [
                         "CERCANA3",
                         "CERCANA3M",
