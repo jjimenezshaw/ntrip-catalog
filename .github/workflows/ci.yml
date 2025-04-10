@@ -31,8 +31,8 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y libcurl4-openssl-dev
           python -m pip install --upgrade pip
-          pip install -r requirements.txt
-          pip install -r requirements.test.txt
+          pip install --user -r requirements.txt
+          pip install --user -r requirements.test.txt
       - name: Run make_dist.py
         run: python scripts/make_dist.py
 
