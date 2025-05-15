@@ -10,7 +10,7 @@
             "url": "https://gnss.ga.gov.au/stream",
             "comments": "Also provides base stations outside of Australia, but the precise CRS is not known"
         },
-        "last_update": "2025-01-13",
+        "last_update": "2025-05-13",
         "streams": [
             {
                 "filter": {
