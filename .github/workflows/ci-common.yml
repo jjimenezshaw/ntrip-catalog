@@ -64,9 +64,9 @@ jobs:
       - name: Checkout Commit
         uses: actions/checkout@v4
         with:
-          ref: ${{ env.GITHUB_SHA }}
-      - name: Dump env.GITHUB_SHA
-        run: echo ${{ env.GITHUB_SHA }}
+          ref: ${{ github.event.pull_request.head.sha }}
+      - name: Dump github.event.pull_request.head.sha
+        run: echo ${{ github.event.pull_request.head.sha }}
       - name: Get Head Commit Message
         id: get_head_commit_message
         run: echo "HEAD_COMMIT_MESSAGE=$(git show -s --format=%s)" >> "$GITHUB_OUTPUT"
