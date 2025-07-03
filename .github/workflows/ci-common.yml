@@ -58,9 +58,23 @@ jobs:
 
       - name: Run tests
         run: tests/run_tests.sh
+      - name: Dump commit message
+        run: echo ${{ github.event.head_commit.message }}
 
+      - name: Checkout Commit
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ env.GITHUB_SHA }}
+      - name: Dump env.GITHUB_SHA
+        run: echo ${{ env.GITHUB_SHA }}
+      - name: Get Head Commit Message
+        id: get_head_commit_message
+        run: echo "HEAD_COMMIT_MESSAGE=$(git show -s --format=%s)" >> "$GITHUB_OUTPUT"
+
+      - name: Dump commit message2
+        run: echo ${{ steps.get_head_commit_message.outputs.HEAD_COMMIT_MESSAGE }}
       - name: Commit and push dist if requested or '[ci-commit-dist]' in last commit message
-        if: ${{ inputs.commit_dist || contains(github.event.head_commit.message, '[ci-commit-dist]')}}
+        if: ${{ inputs.commit_dist || contains(steps.get_head_commit_message.outputs.HEAD_COMMIT_MESSAGE, '[ci-commit-dist]')}}
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
