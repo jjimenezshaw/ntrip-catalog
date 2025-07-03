@@ -59,8 +59,8 @@ jobs:
       - name: Run tests
         run: tests/run_tests.sh
 
-      - name: Commit and push dist if requested
-        if: ${{ inputs.commit_dist }}
+      - name: Commit and push dist if requested or '[ci-commit-dist]' in last commit message
+        if: ${{ inputs.commit_dist || contains(github.event.head_commit.message, '[ci-commit-dist]')}}
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
