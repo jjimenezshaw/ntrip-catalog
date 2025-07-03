@@ -1,0 +1,12 @@
+name: On comment run CI Tests and Commit dist
+
+on:
+  issue_comment:                                     
+      types: [created, edited, deleted]
+
+jobs:
+  call-ci-common-commit-true:
+    if: ${{ github.event.issue.pull_request && contains(github.event.comment.body, '/commit_dist') }}
+    uses: ./.github/workflows/ci-common.yml
+    with:
+      commit_dist: true
